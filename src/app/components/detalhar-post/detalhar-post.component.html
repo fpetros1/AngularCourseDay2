@@ -1,0 +1,21 @@
+<hr>
+
+<form [formGroup]="formularioPost" novalidate>
+    <label>Id do Post</label>
+    <br/>
+    <input type="text" formControlName="postId" [readonly]="true" >
+    
+    <br/>
+    <br/>
+    
+    <label>Título do Post</label>
+    <br/>
+    <input type="text" formControlName="postTitle">
+    
+    <br/>
+    <br/>
+    
+    <label>Corpo do Post</label>
+    <br/>
+    <textarea rows="5" cols="100" formControlName="postBody"></textarea>
+</form>

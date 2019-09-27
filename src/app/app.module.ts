@@ -1,16 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { Routes, RouterModule } from '@angular/router';
+import { RootComponent } from './components/root.component';
+import { SharedModule } from './modules/shared.module';
+
+const routes: Routes = [
+  { path: '', component: RootComponent, pathMatch: 'full' },
+  { path: 'posts',
+    loadChildren: () => import('./modules/post.module').then(
+      x => x.PostModule
+    ) 
+  }
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    SharedModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
